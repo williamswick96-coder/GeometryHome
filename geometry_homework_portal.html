@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10th Grade Geometry | Dr. Swick</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- MathJax for rendering equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f1f5f9;
+        }
+        .math-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="math-grid min-h-screen flex flex-col justify-between antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <!-- Left Branding -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center font-mono font-bold text-xl text-sky-400">
+                    $$\triangle$$
+                </div>
+                <div>
+                    <span class="text-base font-bold text-white tracking-tight block">10th Grade Geometry</span>
+                    <span class="text-xs text-sky-400 font-medium">Dr. Swick, Ph.D.</span>
+                </div>
+            </div>
+
+            <!-- Top Right Selection Menu / Navigation -->
+            <div class="flex items-center space-x-3">
+                <label for="assignmentSelect" class="hidden sm:inline-block text-xs font-medium text-slate-400">
+                    Select Assignment:
+                </label>
+                <div class="relative">
+                    <select id="assignmentSelect" onchange="navigateToPage(this.value)" class="bg-slate-900 text-sky-300 text-xs font-medium rounded-lg px-4 py-2.5 border border-sky-500/40 hover:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500/50 transition-all cursor-pointer shadow-lg shadow-sky-500/5">
+                        <option value="" disabled selected>— Select Assignment —</option>
+                        <option value="hw1">Homework 1: Points, Lines & Angles</option>
+                        <option value="hw2">Homework 2: Pythagorean Theorem & Distance</option>
+                        <option value="hw3">Homework 3: Congruence & Proofs</option>
+                        <option value="hw4">Homework 4: Circle Theorems & Arcs</option>
+                        <option value="syllabus">Course Syllabus & Policies</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Welcome Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow flex flex-col justify-center items-center text-center">
+        
+        <!-- Welcome Card -->
+        <div class="w-full bg-slate-900/60 border border-slate-800 rounded-2xl p-8 sm:p-12 space-y-8 backdrop-blur-sm shadow-2xl relative overflow-hidden">
+            
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Course Formula Header: Distance Formula -->
+            <div class="inline-block px-5 py-3 rounded-full bg-slate-800/80 border border-slate-700 font-mono text-sm sm:text-base text-sky-300 shadow-inner">
+                $$d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$
+            </div>
+
+            <!-- Welcome Title & Main Message -->
+            <div class="space-y-3">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Welcome to Geometry
+                </h1>
+                <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                    Exploring spatial reasoning, geometric proofs, coordinate geometry, transformations, and trigonometric relationships.
+                </p>
+            </div>
+
+            <!-- Upper Right Instruction Banner -->
+            <div class="bg-sky-950/40 border border-sky-500/30 rounded-xl p-4 sm:p-5 text-left flex items-start space-x-4 max-w-lg mx-auto">
+                <div class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                </div>
+                <div class="space-y-1">
+                    <h2 class="text-xs font-bold text-sky-300 uppercase tracking-wider">Accessing Your Work</h2>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        To view homework problem sets, submission portals, or the course syllabus, please use the <strong class="text-white font-semibold">Select Assignment</strong> dropdown menu located in the upper right.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Instructor Info Badge -->
+            <div class="border-t border-slate-800/80 pt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-slate-400">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-user-graduate text-sky-400"></i>
+                    <span class="text-slate-200 font-medium">Dr. Swick, Ph.D.</span>
+                </div>
+                <span class="hidden sm:inline text-slate-600">•</span>
+                <div>Specialization: <span class="text-slate-300">Physical Oceanography</span></div>
+                <span class="hidden sm:inline text-slate-600">•</span>
+                <a href="mailto:bswick@school.edu" class="text-sky-400 hover:underline">bswick@school.edu</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-slate-800/60 bg-slate-950 py-4 text-center text-xs text-slate-600">
+        10th Grade Geometry • Department of Mathematics
+    </footer>
+
+    <!-- Notification Toast replacing alert() -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-sky-500 text-slate-950 text-xs font-semibold px-4 py-3 rounded-lg shadow-xl flex items-center space-x-2">
+        <i class="fa-solid fa-circle-info"></i>
+        <span id="toastText">Navigating...</span>
+    </div>
+
+    <script>
+        function navigateToPage(pageValue) {
+            if (!pageValue) return;
+
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toastText');
+            
+            const labels = {
+                'hw1': 'Homework 1: Points, Lines & Angles',
+                'hw2': 'Homework 2: Pythagorean Theorem & Distance',
+                'hw3': 'Homework 3: Congruence & Proofs',
+                'hw4': 'Homework 4: Circle Theorems & Arcs',
+                'syllabus': 'Course Syllabus & Policies'
+            };
+
+            toastText.innerText = `Navigating to ${labels[pageValue] || pageValue}...`;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
