@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint Peter the Rock Academy | Geometry Course Portal</title>
+    <!-- Google Fonts for Tufte Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ET+Book:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- MathJax 3 Configuration & Loader -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #fffff8;
+            --text-color: #111111;
+            --muted-color: #777777;
+            --border-color: #e5e5d0;
+            --accent-color: #990000;
+            --accent-bg: #fdfdf5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'ET Book', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            text-rendering: optimizeLegibility;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .school-brand {
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        h1.site-title {
+            font-size: 2.25rem;
+            font-weight: 400;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .instructor-info {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--muted-color);
+        }
+
+        /* Tufte Asymmetric Two-Column Grid */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            aside.right-margin {
+                border-left: none;
+                border-top: 2px solid var(--border-color);
+                padding-left: 0;
+                padding-top: 1.5rem;
+            }
+        }
+
+        main {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.3rem;
+        }
+
+        main h2:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1.4rem;
+            text-align: left;
+        }
+
+        /* Margin Notes */
+        aside.right-margin {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #333333;
+            line-height: 1.55;
+            padding-top: 0.25rem;
+            border-left: 2px solid var(--border-color);
+            padding-left: 1.25rem;
+        }
+
+        .margin-note {
+            margin-bottom: 2.25rem;
+        }
+
+        .margin-note strong {
+            display: block;
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .margin-note ul {
+            margin: 0.4rem 0 0 0;
+            padding-left: 1.1rem;
+        }
+
+        .margin-note li {
+            margin-bottom: 0.35rem;
+        }
+
+        /* Semester Controls */
+        .semester-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin: 2rem 0 1.5rem 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .semester-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.35rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--muted-color);
+        }
+
+        .semester-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        .semester-btn.active {
+            background: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
+
+        /* Schedule Blocks */
+        .week-block {
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            background-color: var(--accent-bg);
+        }
+
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .week-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent-color);
+        }
+
+        .chapter-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted-color);
+        }
+
+        .schedule-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .schedule-item {
+            margin-bottom: 0.75rem;
+            display: grid;
+            grid-template-columns: 155px 1fr;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .schedule-item:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+            }
+        }
+
+        .day-label {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .day-content {
+            color: #333333;
+        }
+
+        .checkpoint-highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .exam-highlight {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-color);
+        }
+
+        .video-link:hover {
+            border-bottom-style: solid;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--muted-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <div class="school-brand">Saint Peter the Rock Academy</div>
+            <h1 class="site-title">Geometry Course Portal</h1>
+        </div>
+        <div class="instructor-info">
+            Instructor: Dr. William A. Swick &bull; Ph.D. Physical Oceanography
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Main Reading & Schedule Column -->
+        <main>
+            <h2>Course Overview</h2>
+            <p>
+                Welcome to Geometry at Saint Peter the Rock Academy. This portal presents our complete academic year schedule covering Chapters 5 through 12 of <em>Holt Geometry</em>, along with daily assignments, checkpoint dates, examination schedules, and supplemental video resources.
+            </p>
+
+            <h2>Assessment &amp; Routine</h2>
+            <p>
+                In-class instruction takes place twice weekly every Tuesday and Thursday, where attendance and active participation during demonstrations are required. Focused daily homework problem sets out of <em>Holt Geometry</em> are scheduled for Wednesday, Friday, Saturday, and Monday. Chapter Checkpoint assignments are completed on Mondays following each chapter's completion.
+            </p>
+
+            <!-- Semester Toggle Controls -->
+            <div class="semester-controls">
+                <button onclick="switchSemester('fall')" id="btn-fall" class="semester-btn active">Fall Semester 2026</button>
+                <button onclick="switchSemester('spring')" id="btn-spring" class="semester-btn">Spring Semester 2027</button>
+            </div>
+
+            <!-- Fall Semester Schedule -->
+            <div id="semester-fall">
+                <!-- Week 1 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 1: Nov 8 – Nov 14, 2026</span>
+                        <span class="chapter-tag">Chapter 5</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Nov 10 (Class):</span>
+                            <span class="day-content">
+                                Section 5-4: The Pythagorean Theorem — Course Kickoff.
+                                <a href="https://youtu.be/d8EA5TxGzcY?si=4tABSBe22Bn8d9FN" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Pythagorean Theorem</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Nov 11 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 5-4 Pythagorean Drills.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Nov 12 (Class):</span>
+                            <span class="day-content">
+                                Section 5-5: Special Triangles and Areas of Regular Polygons.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig/hs-geo-special-right-triangles" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Special Triangles</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Nov 13 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 5-5 Practice Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Nov 14 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 5-4 Application Problems.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Nov 16 (HW):</span>
+                            <span class="day-content">Section 5-4 &amp; 5-5 Mixed Skill Practice.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 2: Nov 15 – Nov 21, 2026</span>
+                        <span class="chapter-tag">Chapter 5 Completion</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Nov 17 (Class):</span>
+                            <span class="day-content">
+                                Section 5-6: The Distance Formula &amp; Section 5-7: Proofs Using Coordinate Geometry.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-analytic-geometry/hs-geo-distance-and-midpoints" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Distance Formula</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Nov 18 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 5-6 &amp; 5-7 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Nov 19 (Class):</span>
+                            <span class="day-content">
+                                Section 5-8: Geometric Probability.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-foundations" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Geometric Probability</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Nov 20 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 5-8 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Nov 21 (HW):</span>
+                            <span class="day-content">Chapter 5 Comprehensive Review Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Nov 23 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 5 Checkpoint Assignment</span> &amp; Mastery Problems.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 3: Nov 22 – Nov 28, 2026</span>
+                        <span class="chapter-tag">Thanksgiving Week</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Nov 24 (Class):</span>
+                            <span class="day-content">Catch-up and Chapter 5 Review &amp; Consolidation.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Nov 26:</span>
+                            <span class="day-content"><span class="checkpoint-highlight">No Class — Thanksgiving Break Holiday</span></span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Nov 30 (HW):</span>
+                            <span class="day-content">Post-Thanksgiving Problem Set.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 4: Nov 29 – Dec 5, 2026</span>
+                        <span class="chapter-tag">Chapter 6 Intro</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Dec 1 (Class):</span>
+                            <span class="day-content">
+                                Section 6-1: Solid Shapes &amp; Section 6-2: Spatial Relationships.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: 3D Figures Intro</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Dec 2 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 6-1 &amp; 6-2 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Dec 3 (Class):</span>
+                            <span class="day-content">Continuation of Spatial Relationships &amp; 3D Geometry.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Dec 4 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 6-2 Practice Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Dec 5 (HW):</span>
+                            <span class="day-content">Solid Geometry Warm-up Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Dec 7 (HW):</span>
+                            <span class="day-content">Spatial Geometry &amp; Cross-Sections Reinforcement.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 5: Dec 6 – Dec 12, 2026</span>
+                        <span class="chapter-tag">Chapter 6 &amp; Fall Test #1</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Dec 8 (Class):</span>
+                            <span class="day-content">
+                                Section 6-3: Prisms &amp; Section 6-4: Coordinates in Three Dimensions.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: 3D Coordinate System</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Dec 9 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 6-3 &amp; 6-4 Problem Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Dec 11 (Class):</span>
+                            <span class="day-content"><span class="exam-highlight">Fall In-Class Test #1</span> — Covering Chapter 5 (Sections 5-4 through 5-8) and early Chapter 6.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Dec 12 (HW):</span>
+                            <span class="day-content">Test Corrections and Error Analysis.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Dec 13 (HW):</span>
+                            <span class="day-content">Solid Geometry Review Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Dec 14 (HW):</span>
+                            <span class="day-content">3D Coordinate Practice &amp; Midterm Preparation.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 6 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 6: Dec 13 – Dec 19, 2026</span>
+                        <span class="chapter-tag">Fall Test #2 / Midterm</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Dec 15 (Class):</span>
+                            <span class="day-content">
+                                Section 6-5: Lines and Planes in Space &amp; Section 6-6: Perspective Drawings.
+                                <a href="https://www.khanacademy.org/math/geometry" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Points, Lines &amp; Planes</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Dec 16 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 6-5 &amp; 6-6 Practice.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Dec 17 (Class):</span>
+                            <span class="day-content"><span class="exam-highlight">Fall In-Class Test #2 (Midterm Assessment — Chapters 5–6)</span>.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Winter Break:</span>
+                            <span class="day-content">December 18, 2026 – January 4, 2027 (No Classes)</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Jan 4 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 6 Checkpoint Assignment</span> &amp; Post-Winter Break Solid Geometry Refresher.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Spring Semester Schedule -->
+            <div id="semester-spring" class="hidden">
+                <!-- Week 7 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 7: Jan 3 – Jan 9, 2027</span>
+                        <span class="chapter-tag">Chapter 7 Intro</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Jan 5 (Class):</span>
+                            <span class="day-content">
+                                Section 7-1: Surface Area and Volume.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Volume &amp; Surface Intro</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Jan 6 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 7-1 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Jan 7 (Class):</span>
+                            <span class="day-content">
+                                Section 7-2: Surface Area and Volume of Prisms.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Volume of Prisms</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Jan 8 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 7-2 Prism Problems.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Jan 9 (HW):</span>
+                            <span class="day-content">Section 7-2 Review.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Jan 11 (HW):</span>
+                            <span class="day-content">Prism Volume &amp; Area Practice Drills.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 8 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 8: Jan 10 – Jan 16, 2027</span>
+                        <span class="chapter-tag">Chapter 7 Solids</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Jan 12 (Class):</span>
+                            <span class="day-content">
+                                Section 7-3: Surface Area and Volume of Pyramids.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Volume of Pyramids</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Jan 13 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 7-3 Pyramid Problems.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Jan 14 (Class):</span>
+                            <span class="day-content">Section 7-4: Surface Area and Volume of Cylinders.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Jan 15 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 7-4 Cylinder Calculations.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Jan 16 (HW):</span>
+                            <span class="day-content">Mixed Prism &amp; Pyramid Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Jan 18 (HW):</span>
+                            <span class="day-content">Pyramid &amp; Cylinder Review Set.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 9 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 9: Jan 17 – Jan 23, 2027</span>
+                        <span class="chapter-tag">Cones &amp; Spheres</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Jan 19 (Class):</span>
+                            <span class="day-content">Section 7-5: Surface Area and Volume of Cones.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Jan 20 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 7-5 Cone Calculations.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Jan 21 (Class):</span>
+                            <span class="day-content">
+                                Section 7-6: Spheres &amp; Section 7-7: 3D Symmetry.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-solids" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Volume of Spheres</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Jan 22 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 7-6 &amp; 7-7 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Jan 23 (HW):</span>
+                            <span class="day-content">Cylinder &amp; Cone Review.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Jan 25 (HW):</span>
+                            <span class="day-content">Spheres &amp; 3D Symmetry Consolidation.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 10 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 10: Jan 24 – Jan 30, 2027</span>
+                        <span class="chapter-tag">Chapter 7 Mastery</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Jan 26 (Class):</span>
+                            <span class="day-content">Chapter 7 Comprehensive Review &amp; Problem Workshop.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Jan 27 (HW):</span>
+                            <span class="day-content">Chapter 7 Review Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Jan 28 (Class):</span>
+                            <span class="day-content">Catch-up and Solid Geometry Mastery Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Jan 29 (HW):</span>
+                            <span class="day-content">3D Solids Consolidation.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Jan 30 (HW):</span>
+                            <span class="day-content">Similarity Preparation Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Feb 1 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 7 Checkpoint Assignment</span> &amp; Final Mastery Check.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 11 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 11: Jan 31 – Feb 6, 2027</span>
+                        <span class="chapter-tag">Chapter 8 &amp; Spring Test #1</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Feb 2 (Class):</span>
+                            <span class="day-content">
+                                Section 8-1: Dilations &amp; Section 8-2: Similar Polygons.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-similarity" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Similar Polygons</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Feb 3 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 8-1 &amp; 8-2 Practice.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Feb 5 (Class):</span>
+                            <span class="day-content"><span class="exam-highlight">Spring In-Class Test #1</span> — Covers Chapter 7 and Section 8-3 Triangle Similarity Postulates (AA, SSS, SAS).</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Feb 6 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 8-3 Similarity Proofs.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Feb 7 (HW):</span>
+                            <span class="day-content">Section 8-3 Practice Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Feb 8 (HW):</span>
+                            <span class="day-content">Triangle Similarity Postulates Drill.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 12 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 12: Feb 7 – Feb 13, 2027</span>
+                        <span class="chapter-tag">Chapter 8 Completion</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Feb 9 (Class):</span>
+                            <span class="day-content">
+                                Section 8-4: Side-Splitting Theorem &amp; Section 8-5: Indirect Measurement.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-similarity" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Side-Splitter Theorem</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Feb 10 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 8-4 &amp; 8-5 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Feb 12 (Class):</span>
+                            <span class="day-content">
+                                Section 8-6: Area and Volume Ratios of Similar Figures.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-similarity" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Scaling Ratios</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Feb 13 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 8-6 Ratio Applications.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Feb 14 (HW):</span>
+                            <span class="day-content">Chapter 8 Review.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Feb 15 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 8 Checkpoint Assignment</span> &amp; Scaling/Proportions Problem Set.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 13 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 13: Feb 14 – Feb 20, 2027</span>
+                        <span class="chapter-tag">Chapter 9 Circles</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Feb 16 (Class):</span>
+                            <span class="day-content">
+                                Section 9-1: Chords and Arcs &amp; Section 9-2: Tangents to Circles.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-circles" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Arcs &amp; Tangents</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Feb 17 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 9-1 &amp; 9-2 Drills.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Feb 18 (Class):</span>
+                            <span class="day-content">
+                                Section 9-3: Inscribed Angles &amp; Section 9-4: Angles of Secants and Tangents.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-circles" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Inscribed Angles</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Feb 19 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 9-3 &amp; 9-4 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Feb 20 (HW):</span>
+                            <span class="day-content">Circle Angles Problem Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Feb 22 (HW):</span>
+                            <span class="day-content">Chords, Arcs &amp; Tangents Reinforcement.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 14 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 14: Feb 21 – Feb 27, 2027</span>
+                        <span class="chapter-tag">Chapter 9 &amp; Spring Test #2</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Feb 23 (Class):</span>
+                            <span class="day-content">
+                                Section 9-5: Segments in Circles &amp; Section 9-6: Circles in the Coordinate Plane.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-circles" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Equation of a Circle</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Feb 24 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 9-5 &amp; 9-6 Problems.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Feb 26 (Class):</span>
+                            <span class="day-content"><span class="exam-highlight">Spring In-Class Test #2</span> — Covering Chapters 8 &amp; 9.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Feb 27 (HW):</span>
+                            <span class="day-content">Test Corrections and Remediation.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Feb 28 (HW):</span>
+                            <span class="day-content">Trigonometry Preparation Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Mar 1 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 9 Checkpoint Assignment</span> &amp; Coordinate Circles Practice.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 15 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 15: Feb 28 – Mar 6, 2027</span>
+                        <span class="chapter-tag">Chapter 10 Trigonometry</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Mar 2 (Class):</span>
+                            <span class="day-content">
+                                Section 10-1: Tangent Ratios &amp; Section 10-2: Sines and Cosines.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Intro to Trig Ratios</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Mar 3 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 10-1 &amp; 10-2 Practice.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Mar 4 (Class):</span>
+                            <span class="day-content">
+                                Section 10-3: Extending Ratios &amp; Section 10-4: The Law of Sines.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Law of Sines</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Mar 5 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 10-3 &amp; 10-4 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Mar 6 (HW):</span>
+                            <span class="day-content">Non-right triangle drills.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Mar 8 (HW):</span>
+                            <span class="day-content">Law of Sines Drills &amp; Application Problems.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 16 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 16: Mar 7 – Mar 13, 2027</span>
+                        <span class="chapter-tag">Vectors &amp; Rotations</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Mar 9 (Class):</span>
+                            <span class="day-content">
+                                Section 10-5: Law of Cosines &amp; Section 10-6: Vectors in Geometry.
+                                <a href="https://www.khanacademy.org/math/geometry/hs-geo-trig" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Law of Cosines</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Mar 10 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 10-5 &amp; 10-6 Problems.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Mar 11 (Class):</span>
+                            <span class="day-content">Section 10-7: Rotations in the Coordinate Plane.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Mar 12 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 10-7 Coordinate Rotations.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Mar 13 (HW):</span>
+                            <span class="day-content">Chapter 10 Comprehensive Review.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Mar 15 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 10 Checkpoint Assignment</span> &amp; Vector Addition/Coordinate Rotations Drill.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 17 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 17: Mar 14 – Mar 20, 2027</span>
+                        <span class="chapter-tag">Spring Test #3 &amp; Spring Break</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Mar 16 (Class):</span>
+                            <span class="day-content"><span class="exam-highlight">Spring In-Class Test #3 (Covering Chapters 8–10)</span>.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Mar 17 (HW):</span>
+                            <span class="day-content">Test Error Analysis.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Mar 18 (Class):</span>
+                            <span class="day-content">Advanced Trigonometry &amp; Mixed Review Session.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Mar 19 (HW):</span>
+                            <span class="day-content">Pre-Spring Break Problem Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Mar 20 (HW):</span>
+                            <span class="day-content">Advanced Geometry Challenge Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Spring Break:</span>
+                            <span class="day-content">March 23 – April 5, 2027 (No Classes)</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Apr 5 (HW):</span>
+                            <span class="day-content">Post-Spring Break Warm-up Problems.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 18 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 18: Apr 4 – Apr 10, 2027</span>
+                        <span class="chapter-tag">Chapter 11 Topics</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Apr 6 (Class):</span>
+                            <span class="day-content">Section 11-1: Golden Connections &amp; Section 11-2: Taxicab Geometry.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Apr 7 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 11-1 &amp; 11-2 Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Apr 8 (Class):</span>
+                            <span class="day-content">Section 11-3: Graph Theory &amp; Section 11-4: Topology: Twisted Geometry.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Apr 9 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 11-3 &amp; 11-4 Practice.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Apr 10 (HW):</span>
+                            <span class="day-content">Alternative Geometry Problem Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Apr 12 (HW):</span>
+                            <span class="day-content">Graph Theory &amp; Non-Euclidean Exploration.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 19 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 19: Apr 11 – Apr 17, 2027</span>
+                        <span class="chapter-tag">Fractals &amp; Chapter 12 Logic</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Apr 13 (Class):</span>
+                            <span class="day-content">Section 11-6: Fractal Geometry.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Apr 14 (HW):</span>
+                            <span class="day-content">Holt Geometry Section 11-6 Fractal Exercises.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Apr 15 (Class):</span>
+                            <span class="day-content">
+                                Section 12-3: If-Then Statements &amp; Section 12-5: Computer Logic.
+                                <a href="https://www.khanacademy.org/math/geometry" target="_blank" rel="noopener noreferrer" class="video-link"><i class="fa-brands fa-youtube"></i> Khan: Conditional Statements</a>
+                            </span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Apr 16 (HW):</span>
+                            <span class="day-content">Holt Geometry Sections 12-3 &amp; 12-5 Practice.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Apr 17 (HW):</span>
+                            <span class="day-content">Logic and Deductive Reasoning Problem Set.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Apr 19 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 11 Checkpoint Assignment</span> &amp; Logic/Proof Structure Review.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 20 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 20: Apr 18 – Apr 24, 2027</span>
+                        <span class="chapter-tag">Final Exam Preparation</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Apr 20 (Class):</span>
+                            <span class="day-content">Comprehensive Final Review (Part 1 — Pythagorean Theorem &amp; Coordinate Proofs).</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Apr 21 (HW):</span>
+                            <span class="day-content">Cumulative Review Module 1 (Area &amp; Perimeter).</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Apr 22 (Class):</span>
+                            <span class="day-content">Comprehensive Final Exam Review (Part 2 — 3D Solids &amp; Volume).</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Apr 23 (HW):</span>
+                            <span class="day-content">Cumulative Review Module 2.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, Apr 24 (HW):</span>
+                            <span class="day-content">Cumulative Review Module 3.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, Apr 26 (HW):</span>
+                            <span class="day-content"><span class="checkpoint-highlight">Chapter 12 Checkpoint Assignment</span> &amp; Cumulative Module 3 Remediation.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 21 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 21: Apr 25 – May 1, 2027</span>
+                        <span class="chapter-tag">Review Phase</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, Apr 27 (Class):</span>
+                            <span class="day-content">Comprehensive Final Review (Part 3 — Similarity &amp; Circles).</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, Apr 28 (HW):</span>
+                            <span class="day-content">Cumulative Review Module 4.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, Apr 29 (Class):</span>
+                            <span class="day-content">Comprehensive Final Review (Part 4 — Trigonometry &amp; Proofs).</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, Apr 30 (HW):</span>
+                            <span class="day-content">Cumulative Review Module 5.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, May 1 (HW):</span>
+                            <span class="day-content">Practice Final Exam Section A.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, May 3 (HW):</span>
+                            <span class="day-content">Section A Error Analysis &amp; Formula Practice.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 22 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 22: May 2 – May 8, 2027</span>
+                        <span class="chapter-tag">Mock Exams</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, May 4 (Class):</span>
+                            <span class="day-content">Final Exam Mock Exam &amp; Diagnostic Review.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, May 5 (HW):</span>
+                            <span class="day-content">Targeted Weak-Spot Remediation.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, May 6 (Class):</span>
+                            <span class="day-content">Final Exam Comprehensive Q&amp;A Session.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Fri, May 7 (HW):</span>
+                            <span class="day-content">Practice Final Exam Section B.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Sat, May 8 (HW):</span>
+                            <span class="day-content">Final Formulas and Theorems Master Review.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Mon, May 10 (HW):</span>
+                            <span class="day-content">Final Pre-Exam Check &amp; Sheet Review.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Week 23 -->
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-title">Week 23: May 9 – May 15, 2027</span>
+                        <span class="chapter-tag">Final Exams &amp; Conclusion</span>
+                    </div>
+                    <ul class="schedule-list">
+                        <li class="schedule-item">
+                            <span class="day-label">Tue, May 11 (Class):</span>
+                            <span class="day-content"><span class="exam-highlight">Final Exam Part 1 (In-Class Cumulative Assessment)</span>.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Wed, May 12 (HW):</span>
+                            <span class="day-content">Final Exam Reflection and Wrap-up.</span>
+                        </li>
+                        <li class="schedule-item">
+                            <span class="day-label">Thu, May 13 (Class):</span>
+                            <span class="day-content"><span class="exam-highlight">Final Exam Part 2 &amp; Course Conclusion (Last Day of Class)</span>.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Margin Notes Column -->
+        <aside class="right-margin">
+            <div class="margin-note">
+                <strong>Textbook Reference</strong>
+                All problem sets and section numbers correspond directly to <em>Holt Geometry</em> (Holt, Rinehart &amp; Winston). Students must bring their textbook to all Tuesday and Thursday class sessions.
+            </div>
+
+            <div class="margin-note">
+                <strong>Assessment Structure</strong>
+                <ul>
+                    <li><strong>Checkpoint Assignments:</strong> Completed on Mondays following each chapter's completion (Chapters 5–12).</li>
+                    <li><strong>Fall Semester:</strong> 2 In-Class Tests (Dec 11 &amp; Dec 17).</li>
+                    <li><strong>Spring Semester:</strong> 3 In-Class Tests + Two-Part Cumulative Final Exam.</li>
+                </ul>
+            </div>
+
+            <div class="margin-note">
+                <strong>Key Academic Dates</strong>
+                <ul>
+                    <li>Course Kickoff: Nov 10, 2026</li>
+                    <li>Thanksgiving Break: Nov 26, 2026</li>
+                    <li>Winter Break: Dec 17, 2026 – Jan 5, 2027</li>
+                    <li>Spring Break: Mar 23 – Apr 6, 2027</li>
+                    <li>Final Exams: May 11 &amp; May 13, 2027</li>
+                </ul>
+            </div>
+
+            <div class="margin-note">
+                <strong>Grade Token Submission</strong>
+                Copy and paste the grade verification token generated after completing all problems for each daily module into your assignment portal. New modules are published each Tuesday evening.
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        Saint Peter the Rock Academy &bull; Department of Mathematics &bull; Geometry
+    </footer>
+
+    <script>
+        function switchSemester(semester) {
+            const fallDiv = document.getElementById('semester-fall');
+            const springDiv = document.getElementById('semester-spring');
+            const fallBtn = document.getElementById('btn-fall');
+            const springBtn = document.getElementById('btn-spring');
+
+            if (semester === 'fall') {
+                fallDiv.classList.remove('hidden');
+                springDiv.classList.add('hidden');
+                fallBtn.classList.add('active');
+                springBtn.classList.remove('active');
+            } else {
+                springDiv.classList.remove('hidden');
+                fallDiv.classList.add('hidden');
+                springBtn.classList.add('active');
+                fallBtn.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
